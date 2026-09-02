@@ -27,16 +27,55 @@ body {
   color: var(--text);
   font-family: Inter, sans-serif;
   line-height: 1.6;
+  position: relative;
 }
 a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+#stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.nav, main, footer { position: relative; z-index: 1; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: reveal-up .9s cubic-bezier(.16,.8,.3,1) forwards;
+}
+.reveal-1 { animation-delay: .05s; }
+.reveal-2 { animation-delay: .22s; }
+.reveal-3 { animation-delay: .38s; }
+.reveal-4 { animation-delay: .52s; }
+@keyframes reveal-up {
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
 .nav {
   height: 76px; padding: 0 7%; display: flex; align-items: center;
   justify-content: space-between; border-bottom: 1px solid var(--line);
   position: sticky; top: 0; z-index: 10; background: rgba(8,11,16,.88);
   backdrop-filter: blur(14px);
 }
+.brand { display: flex; align-items: center; gap: 14px; }
 .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
 .logo span, h1 span, h2 span { color: var(--accent); }
+.role-tag {
+  display: flex; align-items: center; gap: 14px;
+  color: var(--muted); font-size: .82rem;
+}
+.role-tag::before { content: ''; width: 1px; height: 18px; background: var(--line); }
 nav { display: flex; gap: 28px; }
 nav a { color: var(--muted); font-size: .9rem; transition: .2s; }
 nav a:hover { color: var(--text); }
@@ -106,6 +145,7 @@ footer { padding: 25px 7%; border-top: 1px solid var(--line); display: flex; jus
   .terminal { display: none; }
   .about-grid { grid-template-columns: 1fr; gap: 20px; }
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .role-tag { display: none; }
 }
 @media (max-width: 600px) {
   .nav { padding: 0 5%; }
@@ -123,8 +163,12 @@ footer { padding: 25px 7%; border-top: 1px solid var(--line); display: flex; jus
 </style>
 </head>
 <body>
+  <canvas id="stars"></canvas>
   <header class="nav">
-    <a class="logo" href="#home">BM<span>.</span></a>
+    <div class="brand">
+      <a class="logo" href="#home">BM<span>.</span></a>
+      <span class="role-tag">Cloud & Infrastructure Engineer</span>
+    </div>
     <button class="menu-btn" aria-label="Toggle menu">☰</button>
     <nav>
       <a href="#about">About</a>
@@ -138,18 +182,18 @@ footer { padding: 25px 7%; border-top: 1px solid var(--line); display: flex; jus
   <main>
     <section id="home" class="hero">
       <div class="hero-content">
-        <p class="eyebrow">CLOUD & INFRASTRUCTURE ENGINEER</p>
-        <h1>Building reliable<br><span>IT infrastructure.</span></h1>
-        <p class="lead">
+        <p class="eyebrow reveal reveal-1">CLOUD & INFRASTRUCTURE ENGINEER</p>
+        <h1 class="reveal reveal-2">Building reliable<br><span>IT infrastructure.</span></h1>
+        <p class="lead reveal reveal-3">
           I help organizations build efficient and scalable infrastructure
           through cloud, virtualization, networking, Linux, and automation.
         </p>
-        <div class="actions">
+        <div class="actions reveal reveal-4">
           <a class="btn primary" href="#projects">View My Work</a>
           <a class="btn secondary" href="#contact">Let's Connect</a>
         </div>
       </div>
-      <div class="terminal">
+      <div class="terminal reveal reveal-3">
         <div class="terminal-top"><i></i><i></i><i></i><span>infrastructure.sh</span></div>
         <div class="terminal-body">
           <p><b>$</b> whoami</p>
@@ -158,7 +202,7 @@ footer { padding: 25px 7%; border-top: 1px solid var(--line); display: flex; jus
           <p class="output">AWS · VMware · Linux · Networking</p>
           <p class="output">Docker · Ansible · Terraform</p>
           <p><b>$</b> status</p>
-          <p class="success">● Building & Learning</p>
+          <p class="success">● <span id="status-text">Building & Learning</span></p>
         </div>
       </div>
     </section>
@@ -296,6 +340,97 @@ document.querySelectorAll('nav a').forEach(link => {
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
+/* ---------- Starfield background ---------- */
+(function () {
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let w, h, stars, dpr;
+
+  function sizeCanvas() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth;
+    h = document.documentElement.scrollHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function makeStars() {
+    const density = (w * h) / 9000;
+    const count = Math.max(90, Math.min(260, Math.round(density)));
+    stars = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 1.15 + 0.25,
+      baseAlpha: Math.random() * 0.5 + 0.25,
+      phase: Math.random() * Math.PI * 2,
+      speed: Math.random() * 0.006 + 0.002,
+      drift: (Math.random() - 0.5) * 0.02
+    }));
+  }
+
+  function init() {
+    sizeCanvas();
+    makeStars();
+    if (reduceMotion) drawStatic();
+  }
+
+  function drawStatic() {
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = '#edf2f7';
+    stars.forEach(s => {
+      ctx.globalAlpha = s.baseAlpha;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+  }
+
+  let t = 0;
+  function animate() {
+    t += 1;
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = '#edf2f7';
+    stars.forEach(s => {
+      const twinkle = Math.sin(t * s.speed + s.phase) * 0.35;
+      ctx.globalAlpha = Math.max(0, Math.min(1, s.baseAlpha + twinkle));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+
+      s.y += s.drift;
+      if (s.y > h) s.y = 0;
+      if (s.y < 0) s.y = h;
+    });
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(animate);
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(init, 200);
+  });
+
+  init();
+  if (!reduceMotion) requestAnimationFrame(animate);
+})();
+
+/* ---------- Terminal status blink ---------- */
+(function () {
+  const el = document.getElementById('status-text');
+  if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  el.style.transition = 'opacity .5s ease';
+  setInterval(() => {
+    el.style.opacity = '0.45';
+    setTimeout(() => { el.style.opacity = '1'; }, 400);
+  }, 2600);
+})();
 </script>
 </body>
 </html>
