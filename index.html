@@ -1,436 +1,1774 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bishoy Maged - Cloud & Infrastructure Engineer Portfolio">
-  <title>Bishoy Maged | Cloud & Infrastructure Engineer</title>
+    <meta charset="UTF-8">
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-:root {
-  --bg: #080b10;
-  --surface: #0e131a;
-  --surface-2: #121923;
-  --text: #edf2f7;
-  --muted: #8c98a8;
-  --line: #202a36;
-  --accent: #69e6a5;
-  --accent-2: #9df5c5;
-}
+    <meta name="description"
+        content="Bishoy Maged - Cloud & Infrastructure Engineer specializing in AWS, VMware, Linux, Networking and Data Center Infrastructure.">
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: Inter, sans-serif;
-  line-height: 1.6;
-  position: relative;
-}
-a { color: inherit; text-decoration: none; }
-a:focus-visible, button:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 3px;
-}
+    <meta name="author" content="Bishoy Maged">
 
-#stars {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-.nav, main, footer { position: relative; z-index: 1; }
+    <title>Bishoy Maged | Cloud & Infrastructure Engineer</title>
 
-.reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  animation: reveal-up .9s cubic-bezier(.16,.8,.3,1) forwards;
-}
-.reveal-1 { animation-delay: .05s; }
-.reveal-2 { animation-delay: .22s; }
-.reveal-3 { animation-delay: .38s; }
-.reveal-4 { animation-delay: .52s; }
-@keyframes reveal-up {
-  to { opacity: 1; transform: translateY(0); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .reveal { animation: none; opacity: 1; transform: none; }
-  html { scroll-behavior: auto; }
-}
-.nav {
-  height: 76px; padding: 0 7%; display: flex; align-items: center;
-  justify-content: space-between; border-bottom: 1px solid var(--line);
-  position: sticky; top: 0; z-index: 10; background: rgba(8,11,16,.88);
-  backdrop-filter: blur(14px);
-}
-.brand { display: flex; align-items: center; gap: 14px; }
-.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
-.logo span, h1 span, h2 span { color: var(--accent); }
-.role-tag {
-  display: flex; align-items: center; gap: 14px;
-  color: var(--muted); font-size: .82rem;
-}
-.role-tag::before { content: ''; width: 1px; height: 18px; background: var(--line); }
-nav { display: flex; gap: 28px; }
-nav a { color: var(--muted); font-size: .9rem; transition: .2s; }
-nav a:hover { color: var(--text); }
-.menu-btn { display: none; background: none; border: 0; color: var(--text); font-size: 1.5rem; }
+    <style>
 
-.hero {
-  min-height: calc(100vh - 76px); padding: 8% 7%;
-  display: grid; grid-template-columns: 1.15fr .85fr; gap: 7%;
-  align-items: center;
-}
-.eyebrow, .section-label {
-  color: var(--accent); font: 600 .95rem 'JetBrains Mono', monospace;
-  letter-spacing: 2.2px;
-}
-.hero h1 { font-size: clamp(2.7rem, 5.2vw, 5rem); line-height: .98; letter-spacing: -3.5px; margin: 20px 0; }
-.lead { color: var(--muted); max-width: 650px; font-size: 1.05rem; }
-.actions { display: flex; gap: 12px; margin-top: 34px; }
-.btn { padding: 13px 20px; border: 1px solid var(--line); border-radius: 7px; font-weight: 600; font-size: .9rem; }
-.primary { background: var(--accent); color: #07100b; border-color: var(--accent); }
-.secondary:hover { border-color: var(--accent); }
+        /* =========================
+           RESET
+        ========================= */
 
-.terminal { background: #070a0e; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; box-shadow: 0 30px 90px rgba(0,0,0,.35); }
-.terminal-top { height: 42px; padding: 0 14px; display: flex; align-items: center; gap: 7px; border-bottom: 1px solid var(--line); color: var(--muted); font: .7rem 'JetBrains Mono', monospace; }
-.terminal-top i { width: 9px; height: 9px; border-radius: 50%; background: #333c47; }
-.terminal-top span { margin-left: 8px; }
-.terminal-body { padding: 25px; font: .82rem/2 'JetBrains Mono', monospace; }
-.terminal-body b { color: var(--accent); }
-.output { color: #aeb9c7; padding-left: 18px; }
-.success { color: var(--accent); padding-left: 18px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.section { padding: 110px 7%; border-top: 1px solid var(--line); }
-.muted { background: var(--surface); }
-.section h2 { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -2px; margin: 18px 0 42px; }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10%; }
-.about-grid p { color: var(--muted); margin-bottom: 20px; max-width: 620px; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-.skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.skill { background: var(--bg); border: 1px solid var(--line); padding: 25px; min-height: 185px; border-radius: 8px; transition: transform .2s, border-color .2s; }
-.skill:hover { transform: translateY(-4px); border-color: #3b4b5d; }
-.skill strong { color: var(--accent); font-size: 1.4rem; }
-.skill h3 { margin: 16px 0 5px; }
-.skill p, .project p, .timeline-item p, .contact > p { color: var(--muted); font-size: .9rem; }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050807;
+            color: #e7eee9;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-.projects { display: grid; gap: 12px; }
-.project { display: grid; grid-template-columns: 90px 1fr; gap: 30px; padding: 30px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); transition: .2s; }
-.project:hover { border-color: #3b4b5d; }
-.project-number { font: 600 1.8rem 'JetBrains Mono', monospace; color: #4d5967; }
-.tags { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 13px; }
-.tags span { color: var(--accent); border: 1px solid #294d3b; padding: 4px 8px; border-radius: 100px; font: .68rem 'JetBrains Mono', monospace; }
-.project h3 { font-size: 1.25rem; margin-bottom: 7px; }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-.timeline { max-width: 850px; }
-.timeline-item { display: grid; grid-template-columns: 180px 1fr; padding: 24px 0; border-bottom: 1px solid var(--line); }
-.timeline-item > span { color: var(--accent); font: .75rem 'JetBrains Mono', monospace; }
-.timeline-item h3 { margin-bottom: 5px; }
+        /* =========================
+           VARIABLES
+        ========================= */
 
-.contact { text-align: center; padding-bottom: 130px; }
-.contact h2 { margin-bottom: 15px; }
-.contact > p { max-width: 560px; margin: 0 auto; }
-.contact-links { display: flex; justify-content: center; gap: 12px; margin-top: 28px; }
-.contact-links a { border-bottom: 1px solid var(--accent); padding: 5px 2px; }
+        :root {
+            --green: #00ff88;
+            --green-dark: #00b866;
+            --bg: #050807;
+            --bg-secondary: #09100d;
+            --card: rgba(12, 22, 17, 0.75);
+            --border: rgba(0, 255, 136, 0.18);
+            --text: #e7eee9;
+            --muted: #91a199;
+        }
 
-footer { padding: 25px 7%; border-top: 1px solid var(--line); display: flex; justify-content: space-between; color: #66717f; font: .7rem 'JetBrains Mono', monospace; }
+        /* =========================
+           STAR BACKGROUND
+        ========================= */
 
-@media (max-width: 850px) {
-  .hero { grid-template-columns: 1fr; padding-top: 70px; }
-  .terminal { display: none; }
-  .about-grid { grid-template-columns: 1fr; gap: 20px; }
-  .skills-grid { grid-template-columns: repeat(2, 1fr); }
-  .role-tag { display: none; }
-}
-@media (max-width: 600px) {
-  .nav { padding: 0 5%; }
-  nav { display: none; position: absolute; top: 76px; left: 0; right: 0; padding: 20px 7%; background: var(--surface); border-bottom: 1px solid var(--line); flex-direction: column; gap: 15px; }
-  nav.open { display: flex; }
-  .menu-btn { display: block; }
-  .hero, .section { padding-left: 5%; padding-right: 5%; }
-  .hero h1 { letter-spacing: -3px; }
-  .skills-grid { grid-template-columns: 1fr; }
-  .project { grid-template-columns: 1fr; gap: 10px; }
-  .timeline-item { grid-template-columns: 1fr; gap: 8px; }
-  footer { padding: 20px 5%; flex-direction: column; gap: 8px; }
-}
+        #stars {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: #050807;
+        }
 
-</style>
+        .glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(0, 255, 136, 0.06);
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .glow.one {
+            top: -200px;
+            left: -150px;
+        }
+
+        .glow.two {
+            bottom: -200px;
+            right: -150px;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+
+            background: rgba(5, 8, 7, 0.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--green);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #c8d2cc;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        section {
+            padding: 110px 8%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            color: var(--green);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            margin-top: 5px;
+        }
+
+        .section-title h2::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--green);
+            margin-top: 15px;
+            box-shadow: 0 0 12px var(--green);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-small {
+            color: var(--green);
+            font-size: 17px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 95px);
+            line-height: 1;
+            margin-bottom: 20px;
+            letter-spacing: -3px;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+            text-shadow: 0 0 25px rgba(0,255,136,0.25);
+        }
+
+        .hero-role {
+            font-size: clamp(24px, 4vw, 42px);
+            font-weight: 600;
+            color: #cbd5cf;
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            color: var(--muted);
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 25px;
+            border: 1px solid var(--green);
+            border-radius: 5px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: #031008;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--green);
+            box-shadow: 0 0 20px rgba(0,255,136,0.2);
+        }
+
+        .btn-outline {
+            color: var(--green);
+        }
+
+        .btn-outline:hover {
+            background: var(--green);
+            color: #031008;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--muted);
+            margin-bottom: 18px;
+            font-size: 17px;
+        }
+
+        .about-card {
+            padding: 35px;
+            border: 1px solid var(--border);
+            background: var(--card);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .about-card h3 {
+            color: var(--green);
+            margin-bottom: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-row span:first-child {
+            color: var(--muted);
+        }
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            padding: 30px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: 0.35s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--green);
+            box-shadow: 0 10px 30px rgba(0,255,136,0.08);
+        }
+
+        .skill-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+            color: #f0f5f2;
+        }
+
+        .skill-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =========================
+           EXPERIENCE
+        ========================= */
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(0,255,136,0.2);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 45px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 15px rgba(0,255,136,0.7);
+        }
+
+        .timeline-date {
+            color: var(--green);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-company {
+            color: #b7c2bc;
+            margin-bottom: 12px;
+        }
+
+        .timeline-item p {
+            color: var(--muted);
+        }
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            padding: 30px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: 0.35s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--green);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: 0.4s;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(0,255,136,0.4);
+        }
+
+        .project-number {
+            color: var(--green);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 12px;
+            padding: 5px 10px;
+            border: 1px solid rgba(0,255,136,0.2);
+            border-radius: 20px;
+            color: var(--green);
+            background: rgba(0,255,136,0.04);
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 25px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--green);
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            background: rgba(0,255,136,0.08);
+            color: var(--green);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .contact-card h3 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .contact-card p {
+            color: var(--muted);
+            font-size: 13px;
+            word-break: break-word;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 35px 8%;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+            color: var(--muted);
+        }
+
+        footer span {
+            color: var(--green);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            color: #b9c4bd;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--green);
+        }
+
+        /* =========================
+           ANIMATION
+        ========================= */
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 90px 6%;
+            }
+
+            .hero {
+                padding-top: 130px;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .hero-role {
+                font-size: 27px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .section-title h2 {
+                font-size: 34px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+            }
+        }
+
+    </style>
 </head>
+
 <body>
-  <canvas id="stars"></canvas>
-  <header class="nav">
-    <div class="brand">
-      <a class="logo" href="#home">BM<span>.</span></a>
-      <span class="role-tag">Cloud & Infrastructure Engineer</span>
-    </div>
-    <button class="menu-btn" aria-label="Toggle menu">☰</button>
+
+    <!-- =========================
+         STAR BACKGROUND
+    ========================= -->
+
+    <canvas id="stars"></canvas>
+
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
     <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
+
+        <a href="#home" class="logo">
+            BM.
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#skills">Skills</a>
+            </li>
+
+            <li>
+                <a href="#experience">Experience</a>
+            </li>
+
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+        </ul>
+
     </nav>
-  </header>
 
-  <main>
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
     <section id="home" class="hero">
-      <div class="hero-content">
-        <p class="eyebrow reveal reveal-1">CLOUD & INFRASTRUCTURE ENGINEER</p>
-        <h1 class="reveal reveal-2">Building reliable<br><span>IT infrastructure.</span></h1>
-        <p class="lead reveal reveal-3">
-          I help organizations build efficient and scalable infrastructure
-          through cloud, virtualization, networking, Linux, and automation.
+
+        <div class="container">
+
+            <div class="hero-content fade-in">
+
+                <div class="hero-small">
+                    HELLO, I'M
+                </div>
+
+                <h1>
+                    Bishoy <span>Maged</span>
+                </h1>
+
+                <div class="hero-role">
+                    Cloud & Infrastructure Engineer
+                </div>
+
+                <p class="hero-description">
+                    Building reliable IT infrastructure across cloud,
+                    virtualization, networking, Linux, and data center
+                    environments.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#projects" class="btn btn-primary">
+                        View My Work
+                    </a>
+
+                    <a href="#contact" class="btn btn-outline">
+                        Contact Me
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section id="about">
+
+        <div class="container">
+
+            <div class="section-title fade-in">
+
+                <span>01</span>
+
+                <h2>
+                    About Me
+                </h2>
+
+            </div>
+
+
+            <div class="about-grid">
+
+                <div class="about-text fade-in">
+
+                    <p>
+                        I am a Cloud & Infrastructure Engineer with a
+                        background in Electrical and Communication Engineering.
+                    </p>
+
+                    <p>
+                        My focus is on designing, deploying and maintaining
+                        reliable infrastructure using cloud platforms,
+                        virtualization, networking, Linux and data center
+                        technologies.
+                    </p>
+
+                    <p>
+                        I enjoy building practical labs and working with
+                        technologies such as AWS, VMware vSphere, Linux,
+                        Windows Server, Docker, Kubernetes and enterprise
+                        infrastructure.
+                    </p>
+
+                </div>
+
+
+                <div class="about-card fade-in">
+
+                    <h3>
+                        Quick Information
+                    </h3>
+
+                    <div class="info-row">
+                        <span>Name</span>
+                        <span>Bishoy Maged</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Role</span>
+                        <span>Cloud & Infrastructure Engineer</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Location</span>
+                        <span>Cairo, Egypt</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Focus</span>
+                        <span>Cloud & Data Center</span>
+                    </div>
+
+                    <div class="info-row">
+                        <span>Infrastructure</span>
+                        <span>VMware / Linux / Networking</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SKILLS
+    ========================= -->
+
+    <section id="skills">
+
+        <div class="container">
+
+            <div class="section-title fade-in">
+
+                <span>02</span>
+
+                <h2>
+                    Technical Skills
+                </h2>
+
+            </div>
+
+
+            <div class="skills-grid">
+
+
+                <div class="skill-card fade-in">
+
+                    <div class="skill-icon">
+                        ☁️
+                    </div>
+
+                    <h3>
+                        Cloud Computing
+                    </h3>
+
+                    <p>
+                        AWS, VPC, EC2, S3, IAM, RDS, ELB,
+                        Auto Scaling, CloudWatch and core AWS
+                        infrastructure services.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card fade-in">
+
+                    <div class="skill-icon">
+                        🖥️
+                    </div>
+
+                    <h3>
+                        VMware
+                    </h3>
+
+                    <p>
+                        VMware vSphere, ESXi, vCenter, HA, DRS,
+                        vMotion, Fault Tolerance and virtual
+                        infrastructure management.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card fade-in">
+
+                    <div class="skill-icon">
+                        🐧
+                    </div>
+
+                    <h3>
+                        Linux
+                    </h3>
+
+                    <p>
+                        Red Hat Enterprise Linux administration,
+                        services, networking, permissions,
+                        storage and system management.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card fade-in">
+
+                    <div class="skill-icon">
+                        🌐
+                    </div>
+
+                    <h3>
+                        Networking
+                    </h3>
+
+                    <p>
+                        Routing & Switching, TCP/IP, VLANs,
+                        subnetting, DNS, DHCP, NAT and
+                        network troubleshooting.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card fade-in">
+
+                    <div class="skill-icon">
+                        📦
+                    </div>
+
+                    <h3>
+                        Containers
+                    </h3>
+
+                    <p>
+                        Docker, Docker Compose, container
+                        networking, images, volumes and
+                        Kubernetes fundamentals.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card fade-in">
+
+                    <div class="skill-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Monitoring
+                    </h3>
+
+                    <p>
+                        AppDynamics, Splunk and SolarWinds
+                        for infrastructure monitoring,
+                        observability and troubleshooting.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card fade-in">
+
+                    <div class="skill-icon">
+                        🪟
+                    </div>
+
+                    <h3>
+                        Windows Server
+                    </h3>
+
+                    <p>
+                        Active Directory, DNS, Group Policy,
+                        Windows Server administration and
+                        enterprise infrastructure concepts.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card fade-in">
+
+                    <div class="skill-icon">
+                        💾
+                    </div>
+
+                    <h3>
+                        Storage
+                    </h3>
+
+                    <p>
+                        SAN, NAS, RAID, LUNs, storage
+                        networking, enterprise storage and
+                        VMware storage concepts.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card fade-in">
+
+                    <div class="skill-icon">
+                        ⚙️
+                    </div>
+
+                    <h3>
+                        Automation & DevOps
+                    </h3>
+
+                    <p>
+                        Git, GitHub, Bash, Python, Terraform,
+                        Ansible, Jenkins and CI/CD fundamentals.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EXPERIENCE
+    ========================= -->
+
+    <section id="experience">
+
+        <div class="container">
+
+            <div class="section-title fade-in">
+
+                <span>03</span>
+
+                <h2>
+                    Experience
+                </h2>
+
+            </div>
+
+
+            <div class="timeline">
+
+
+                <!-- MCIT -->
+
+                <div class="timeline-item fade-in">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-date">
+                        2026 - Present
+                    </div>
+
+                    <h3>
+                        Jr. Cloud & Infrastructure Engineer
+                    </h3>
+
+                    <div class="timeline-company">
+                        Ministry of Communications and Information Technology
+                    </div>
+
+                    <p>
+                        Working with data center infrastructure,
+                        virtualization, cloud technologies,
+                        networking, monitoring and enterprise
+                        infrastructure operations.
+                    </p>
+
+                </div>
+
+
+                <!-- Injaz -->
+
+                <div class="timeline-item fade-in">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-date">
+                        Oct 2025 - Nov 2025
+                    </div>
+
+                    <h3>
+                        ITOM Intern
+                    </h3>
+
+                    <div class="timeline-company">
+                        Injaz Consulting Group
+                    </div>
+
+                    <p>
+                        Worked with monitoring and observability
+                        technologies including AppDynamics,
+                        Splunk and SolarWinds.
+                    </p>
+
+                </div>
+
+
+                <!-- Zero&One -->
+
+                <div class="timeline-item fade-in">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-date">
+                        Jul 2025 - Aug 2025
+                    </div>
+
+                    <h3>
+                        Cloud AI Intern
+                    </h3>
+
+                    <div class="timeline-company">
+                        Zero&One
+                    </div>
+
+                    <p>
+                        Worked with AWS cloud services and
+                        cloud infrastructure concepts.
+                    </p>
+
+                </div>
+
+
+                <!-- NTI -->
+
+                <div class="timeline-item fade-in">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-date">
+                        Feb 2025 - May 2025
+                    </div>
+
+                    <h3>
+                        Cloud Solutions Architect Intern
+                    </h3>
+
+                    <div class="timeline-company">
+                        NTI
+                    </div>
+
+                    <p>
+                        Worked with AWS, VMware vSphere and
+                        Red Hat Linux administration through
+                        practical labs and infrastructure projects.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROJECTS
+    ========================= -->
+
+    <section id="projects">
+
+        <div class="container">
+
+            <div class="section-title fade-in">
+
+                <span>04</span>
+
+                <h2>
+                    Featured Projects
+                </h2>
+
+            </div>
+
+
+            <div class="projects-grid">
+
+
+                <!-- Project 1 -->
+
+                <div class="project-card fade-in">
+
+                    <div class="project-number">
+                        PROJECT 01
+                    </div>
+
+                    <h3>
+                        VMware vSphere Infrastructure
+                    </h3>
+
+                    <p>
+                        Designed and implemented a VMware vSphere
+                        environment including ESXi hosts, vCenter,
+                        cluster configuration, HA, DRS and virtual
+                        networking.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            VMware
+                        </span>
+
+                        <span class="tag">
+                            ESXi
+                        </span>
+
+                        <span class="tag">
+                            vCenter
+                        </span>
+
+                        <span class="tag">
+                            HA
+                        </span>
+
+                        <span class="tag">
+                            DRS
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Project 2 -->
+
+                <div class="project-card fade-in">
+
+                    <div class="project-number">
+                        PROJECT 02
+                    </div>
+
+                    <h3>
+                        AWS Cloud Architecture
+                    </h3>
+
+                    <p>
+                        Built AWS cloud architecture using VPC,
+                        public and private subnets, route tables,
+                        security groups, NAT Gateway, load balancing
+                        and scalable compute resources.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            AWS
+                        </span>
+
+                        <span class="tag">
+                            VPC
+                        </span>
+
+                        <span class="tag">
+                            EC2
+                        </span>
+
+                        <span class="tag">
+                            ELB
+                        </span>
+
+                        <span class="tag">
+                            CloudWatch
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Project 3 -->
+
+                <div class="project-card fade-in">
+
+                    <div class="project-number">
+                        PROJECT 03
+                    </div>
+
+                    <h3>
+                        Active Directory & Group Policy
+                    </h3>
+
+                    <p>
+                        Implemented Windows Server Active Directory
+                        and Group Policy concepts for user management,
+                        permissions and centralized administration.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Windows Server
+                        </span>
+
+                        <span class="tag">
+                            Active Directory
+                        </span>
+
+                        <span class="tag">
+                            DNS
+                        </span>
+
+                        <span class="tag">
+                            GPO
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Project 4 -->
+
+                <div class="project-card fade-in">
+
+                    <div class="project-number">
+                        PROJECT 04
+                    </div>
+
+                    <h3>
+                        Docker Multi-Container Environment
+                    </h3>
+
+                    <p>
+                        Built multi-container environments using
+                        Docker and Docker Compose with custom bridge
+                        networks, services, ports, volumes and
+                        container communication.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Docker
+                        </span>
+
+                        <span class="tag">
+                            Compose
+                        </span>
+
+                        <span class="tag">
+                            Linux
+                        </span>
+
+                        <span class="tag">
+                            Networking
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Project 5 -->
+
+                <div class="project-card fade-in">
+
+                    <div class="project-number">
+                        PROJECT 05
+                    </div>
+
+                    <h3>
+                        Healthcare Security Robot
+                    </h3>
+
+                    <p>
+                        Graduation project focused on implementing
+                        a wireless security system for a healthcare
+                        robot.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            IoT
+                        </span>
+
+                        <span class="tag">
+                            Wireless
+                        </span>
+
+                        <span class="tag">
+                            Security
+                        </span>
+
+                        <span class="tag">
+                            Robotics
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Project 6 -->
+
+                <div class="project-card fade-in">
+
+                    <div class="project-number">
+                        PROJECT 06
+                    </div>
+
+                    <h3>
+                        Infrastructure Monitoring
+                    </h3>
+
+                    <p>
+                        Practical monitoring and observability
+                        experience using enterprise monitoring
+                        platforms to analyze infrastructure
+                        performance and availability.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            Splunk
+                        </span>
+
+                        <span class="tag">
+                            AppDynamics
+                        </span>
+
+                        <span class="tag">
+                            SolarWinds
+                        </span>
+
+                        <span class="tag">
+                            Monitoring
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section id="contact">
+
+        <div class="container">
+
+            <div class="section-title fade-in">
+
+                <span>05</span>
+
+                <h2>
+                    Let's Connect
+                </h2>
+
+            </div>
+
+
+            <div class="contact-content">
+
+
+                <!-- EMAIL -->
+
+                <a
+                    href="mailto:bishoymaged2012@gmail.com"
+                    class="contact-card fade-in"
+                >
+
+                    <div class="contact-icon">
+                        ✉
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Email
+                        </h3>
+
+                        <p>
+                            bishoymaged2012@gmail.com
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <!-- LINKEDIN -->
+
+                <a
+                    href="https://www.linkedin.com/in/bishoy-maged22/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-card fade-in"
+                >
+
+                    <div class="contact-icon">
+                        in
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            LinkedIn
+                        </h3>
+
+                        <p>
+                            linkedin.com/in/bishoy-maged22
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <!-- GITHUB -->
+
+                <a
+                    href="https://github.com/BishoyMaged22"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-card fade-in"
+                >
+
+                    <div class="contact-icon">
+                        &lt;/&gt;
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            GitHub
+                        </h3>
+
+                        <p>
+                            github.com/BishoyMaged22
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="social-links">
+
+            <a
+                href="https://www.linkedin.com/in/bishoy-maged22/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                LinkedIn
+            </a>
+
+            <a
+                href="https://github.com/BishoyMaged22"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                GitHub
+            </a>
+
+            <a
+                href="mailto:bishoymaged2012@gmail.com"
+            >
+                Email
+            </a>
+
+        </div>
+
+        <p>
+            © 2026 <span>Bishoy Maged</span>.
+            Cloud & Infrastructure Engineer.
         </p>
-        <div class="actions reveal reveal-4">
-          <a class="btn primary" href="#projects">View My Work</a>
-          <a class="btn secondary" href="#contact">Let's Connect</a>
-        </div>
-      </div>
-      <div class="terminal reveal reveal-3">
-        <div class="terminal-top"><i></i><i></i><i></i><span>infrastructure.sh</span></div>
-        <div class="terminal-body">
-          <p><b>$</b> whoami</p>
-          <p class="output">cloud-infrastructure@MCIT</p>
-          <p><b>$</b> skills</p>
-          <p class="output">AWS · VMware · Linux · Networking</p>
-          <p class="output">Docker · Ansible · Terraform</p>
-          <p><b>$</b> status</p>
-          <p class="success">● <span id="status-text">Building & Learning</span></p>
-        </div>
-      </div>
-    </section>
 
-    <section id="about" class="section">
-      <div class="section-label">01 / ABOUT</div>
-      <div class="about-grid">
-        <div>
-          <h2>Turning infrastructure<br>into <span>solutions.</span></h2>
-        </div>
-        <div>
-          <p>
-            I'm Bishoy Maged, a Cloud & Infrastructure Engineer with a practical
-            foundation in networking, virtualization, Linux administration,
-            cloud platforms, containers, and data center infrastructure.
-          </p>
-          <p>
-            I enjoy understanding how systems connect together and solving
-            infrastructure problems step by step, from the physical layer
-            through virtualization and cloud services.
-          </p>
-        </div>
-      </div>
-    </section>
+    </footer>
 
-    <section id="skills" class="section muted">
-      <div class="section-label">02 / SKILLS</div>
-      <h2>Tools I work with.</h2>
-      <div class="skills-grid">
-        <div class="skill"><strong>☁</strong><h3>AWS</h3><p>Cloud infrastructure, VPC, EC2, S3, IAM, RDS & CloudWatch</p></div>
-        <div class="skill"><strong>▣</strong><h3>VMware</h3><p>ESXi, vCenter, HA, DRS, vMotion, FT & vSAN</p></div>
-        <div class="skill"><strong>⌁</strong><h3>Networking</h3><p>CCNA, Routing & Switching, VLANs, TCP/IP, DNS & network design</p></div>
-        <div class="skill"><strong>◉</strong><h3>Linux</h3><p>RHEL administration, services, storage, permissions & troubleshooting</p></div>
-        <div class="skill"><strong>◈</strong><h3>Docker</h3><p>Dockerfiles, images, containers, Compose, networks, volumes & limits</p></div>
-        <div class="skill"><strong>⚙</strong><h3>Automation</h3><p>Ansible, Bash, Python, Terraform & infrastructure automation</p></div>
-        <div class="skill"><strong>▤</strong><h3>Storage</h3><p>SAN, NAS, RAID, LUNs, JBOD & enterprise storage</p></div>
-        <div class="skill"><strong>◌</strong><h3>Monitoring</h3><p>AppDynamics, Splunk & SolarWinds</p></div>
-        <div class="skill"><strong>⌘</strong><h3>Git & GitHub</h3><p>Version control, repositories, branching & workflows</p></div>
-        <div class="skill"><strong>◇</strong><h3>Windows Server</h3><p>Active Directory, DNS, domain services & administration</p></div>
-        <div class="skill"><strong>△</strong><h3>Kubernetes</h3><p>Containers, pods, services & orchestration fundamentals</p></div>
-        <div class="skill"><strong>□</strong><h3>DevOps & IaC</h3><p>CI/CD concepts, Infrastructure as Code & DevOps practices</p></div>
-      </div>
-    </section>
 
-    <section id="projects" class="section">
-      <div class="section-label">03 / PROJECTS</div>
-      <h2>Things I've built & practiced.</h2>
-      <div class="projects">
-        <article class="project">
-          <div class="project-number">01</div>
-          <div>
-            <div class="tags"><span>VMware</span><span>vSphere</span><span>Data Center</span></div>
-            <h3>VMware vSphere Infrastructure</h3>
-            <p>Built and managed a virtualized environment with ESXi hosts and vCenter, including HA, DRS, vMotion, Fault Tolerance, Port Groups and VMkernel networking.</p>
-          </div>
-        </article>
-        <article class="project">
-          <div class="project-number">02</div>
-          <div>
-            <div class="tags"><span>Docker</span><span>Compose</span><span>Linux</span></div>
-            <h3>Containerized Application Environment</h3>
-            <p>Created containerized services using Dockerfiles and Docker Compose, with isolated networks, volumes, port mappings and resource limits.</p>
-          </div>
-        </article>
-        <article class="project">
-          <div class="project-number">03</div>
-          <div>
-            <div class="tags"><span>AWS</span><span>VPC</span><span>Cloud</span></div>
-            <h3>AWS Cloud Infrastructure</h3>
-            <p>Designed cloud environments using VPCs, subnets, route tables, security controls and core AWS services with an infrastructure-focused approach.</p>
-          </div>
-        </article>
-        <article class="project">
-          <div class="project-number">04</div>
-          <div>
-            <div class="tags"><span>Storage</span><span>SAN</span><span>Servers</span></div>
-            <h3>Data Center Infrastructure Lab</h3>
-            <p>Practiced enterprise infrastructure concepts across servers, switches and storage, including SAN, NAS, RAID, LUNs and host-to-storage connectivity.</p>
-          </div>
-        </article>
-      </div>
-    </section>
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
-    <section id="experience" class="section muted">
-      <div class="section-label">04 / EXPERIENCE</div>
-      <h2>Where I've built my experience.</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <span>2025 — Present</span>
-          <div><h3>Cloud & Infrastructure Engineer</h3><p>MCIT · Data Center Engineering</p></div>
-        </div>
-        <div class="timeline-item">
-          <span>2025</span>
-          <div><h3>IT Operations Engineer</h3><p>Injaz Consulting Group · AppDynamics, Splunk, SolarWinds</p></div>
-        </div>
-        <div class="timeline-item">
-          <span>2025</span>
-          <div><h3>Cloud AI Engineer</h3><p>Zero&One · AWS Cloud Services</p></div>
-        </div>
-        <div class="timeline-item">
-          <span>2025</span>
-          <div><h3>Cloud Solutions Architect Engineer</h3><p>NTI · AWS, VMware & Red Hat Linux</p></div>
-        </div>
-      </div>
-    </section>
+    <script>
 
-    <section id="contact" class="section contact">
-      <div class="section-label">05 / CONTACT</div>
-      <h2>Let's build something<br><span>reliable.</span></h2>
-      <p>I'm open to infrastructure, cloud, virtualization and DevOps opportunities.</p>
-      <div class="contact-links">
-        <a href="mailto:YOUR_EMAIL@example.com">Email ↗</a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a href="https://github.com/" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-    </section>
-  </main>
+        /* =========================
+           STARFIELD
+        ========================= */
 
-  <footer>
-    <span>© <span id="year"></span> Bishoy Maged</span>
-    <span>Cloud & Infrastructure Engineer</span>
-  </footer>
+        const canvas = document.getElementById("stars");
+        const ctx = canvas.getContext("2d");
 
-<script>
-const menuBtn = document.querySelector('.menu-btn');
-const nav = document.querySelector('nav');
+        let stars = [];
+        let width;
+        let height;
 
-menuBtn.addEventListener('click', () => {
-  nav.classList.toggle('open');
-});
+        function resizeCanvas() {
 
-document.querySelectorAll('nav a').forEach(link => {
-  link.addEventListener('click', () => nav.classList.remove('open'));
-});
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
 
-document.getElementById('year').textContent = new Date().getFullYear();
+            createStars();
+        }
 
-/* ---------- Starfield background ---------- */
-(function () {
-  const canvas = document.getElementById('stars');
-  const ctx = canvas.getContext('2d');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  let w, h, stars, dpr;
+        function createStars() {
 
-  function sizeCanvas() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = window.innerWidth;
-    h = document.documentElement.scrollHeight;
-    canvas.width = w * dpr;
-    canvas.height = h * dpr;
-    canvas.style.width = w + 'px';
-    canvas.style.height = h + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
+            stars = [];
 
-  function makeStars() {
-    const density = (w * h) / 9000;
-    const count = Math.max(90, Math.min(260, Math.round(density)));
-    stars = Array.from({ length: count }, () => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      r: Math.random() * 1.15 + 0.25,
-      baseAlpha: Math.random() * 0.5 + 0.25,
-      phase: Math.random() * Math.PI * 2,
-      speed: Math.random() * 0.006 + 0.002,
-      drift: (Math.random() - 0.5) * 0.02
-    }));
-  }
+            const numberOfStars =
+                Math.floor((width * height) / 8000);
 
-  function init() {
-    sizeCanvas();
-    makeStars();
-    if (reduceMotion) drawStatic();
-  }
+            for (let i = 0; i < numberOfStars; i++) {
 
-  function drawStatic() {
-    ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = '#edf2f7';
-    stars.forEach(s => {
-      ctx.globalAlpha = s.baseAlpha;
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fill();
-    });
-    ctx.globalAlpha = 1;
-  }
+                stars.push({
 
-  let t = 0;
-  function animate() {
-    t += 1;
-    ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = '#edf2f7';
-    stars.forEach(s => {
-      const twinkle = Math.sin(t * s.speed + s.phase) * 0.35;
-      ctx.globalAlpha = Math.max(0, Math.min(1, s.baseAlpha + twinkle));
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fill();
+                    x: Math.random() * width,
 
-      s.y += s.drift;
-      if (s.y > h) s.y = 0;
-      if (s.y < 0) s.y = h;
-    });
-    ctx.globalAlpha = 1;
-    requestAnimationFrame(animate);
-  }
+                    y: Math.random() * height,
 
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(init, 200);
-  });
+                    radius:
+                        Math.random() * 1.5 + 0.2,
 
-  init();
-  if (!reduceMotion) requestAnimationFrame(animate);
-})();
+                    speed:
+                        Math.random() * 0.35 + 0.05,
 
-/* ---------- Terminal status blink ---------- */
-(function () {
-  const el = document.getElementById('status-text');
-  if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  el.style.transition = 'opacity .5s ease';
-  setInterval(() => {
-    el.style.opacity = '0.45';
-    setTimeout(() => { el.style.opacity = '1'; }, 400);
-  }, 2600);
-})();
-</script>
+                    opacity:
+                        Math.random() * 0.7 + 0.2
+
+                });
+
+            }
+
+        }
+
+
+        function drawStars() {
+
+            ctx.clearRect(
+                0,
+                0,
+                width,
+                height
+            );
+
+
+            stars.forEach(star => {
+
+                ctx.beginPath();
+
+                ctx.arc(
+                    star.x,
+                    star.y,
+                    star.radius,
+                    0,
+                    Math.PI * 2
+                );
+
+                ctx.fillStyle =
+                    `rgba(0,255,136,${star.opacity})`;
+
+                ctx.fill();
+
+
+                star.y -= star.speed;
+
+
+                if (star.y < 0) {
+
+                    star.y = height;
+
+                    star.x =
+                        Math.random() * width;
+
+                }
+
+            });
+
+
+            requestAnimationFrame(drawStars);
+
+        }
+
+
+        window.addEventListener(
+            "resize",
+            resizeCanvas
+        );
+
+        resizeCanvas();
+        drawStars();
+
+
+        /* =========================
+           SCROLL ANIMATION
+        ========================= */
+
+        const observer =
+            new IntersectionObserver(
+
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.12
+                }
+
+            );
+
+
+        document
+            .querySelectorAll(".fade-in")
+            .forEach(element => {
+
+                observer.observe(element);
+
+            });
+
+
+        /* =========================
+           NAVBAR SCROLL EFFECT
+        ========================= */
+
+        const navbar =
+            document.querySelector("nav");
+
+
+        window.addEventListener(
+            "scroll",
+            () => {
+
+                if (window.scrollY > 50) {
+
+                    navbar.style.background =
+                        "rgba(5,8,7,0.92)";
+
+                } else {
+
+                    navbar.style.background =
+                        "rgba(5,8,7,0.75)";
+
+                }
+
+            }
+        );
+
+
+    </script>
+
 </body>
 </html>
