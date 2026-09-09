@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
           content="Bishoy Maged - Cloud & Infrastructure Engineer specializing in AWS, VMware, Linux, Networking and Data Center Infrastructure.">
 
-    <meta name="author" content="Bishoy Maged">
+    <meta name="author"
+          content="Bishoy Maged">
 
-    <title>Bishoy Maged | Cloud & Infrastructure Engineer</title>
+    <title>
+        Bishoy Maged | Cloud & Infrastructure Engineer
+    </title>
+
 
     <style>
 
-        /* =========================
+        /* =====================================================
            RESET
-        ========================= */
+        ===================================================== */
 
         * {
             margin: 0;
@@ -23,9 +30,11 @@
             box-sizing: border-box;
         }
 
+
         html {
             scroll-behavior: smooth;
         }
+
 
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -35,634 +44,1374 @@
             overflow-x: hidden;
         }
 
+
         a {
             text-decoration: none;
             color: inherit;
         }
 
-        /* =========================
+
+        /* =====================================================
            VARIABLES
-        ========================= */
+        ===================================================== */
 
         :root {
+
             --blue: #38bdf8;
+
             --blue-dark: #0284c7;
-            --bg: #05080d;
-            --bg-secondary: #08101a;
-            --card: rgba(10, 19, 30, 0.78);
-            --border: rgba(56, 189, 248, 0.18);
+
+            --background: #05080d;
+
+            --card:
+                rgba(10, 19, 30, 0.78);
+
+            --border:
+                rgba(56, 189, 248, 0.18);
+
             --text: #e8edf3;
+
             --muted: #94a3b8;
+
         }
 
-        /* =========================
+
+        /* =====================================================
            STAR BACKGROUND
-        ========================= */
+        ===================================================== */
 
         #stars {
+
             position: fixed;
+
             inset: 0;
+
             width: 100%;
+
             height: 100%;
+
             z-index: -2;
-            background: #05080d;
+
+            background:
+                #05080d;
         }
+
 
         .glow {
+
             position: fixed;
+
             width: 500px;
+
             height: 500px;
+
             border-radius: 50%;
-            background: rgba(56, 189, 248, 0.055);
-            filter: blur(110px);
+
+            background:
+                rgba(56, 189, 248, 0.055);
+
+            filter:
+                blur(110px);
+
             pointer-events: none;
+
             z-index: -1;
+
         }
+
 
         .glow.one {
-            top: -200px;
-            left: -150px;
+
+            top: -220px;
+
+            left: -180px;
+
         }
+
 
         .glow.two {
-            bottom: -200px;
-            right: -150px;
+
+            bottom: -220px;
+
+            right: -180px;
+
         }
 
-        /* =========================
+
+        /* =====================================================
            NAVBAR
-        ========================= */
+        ===================================================== */
 
         nav {
+
             position: fixed;
+
             top: 0;
+
             left: 0;
+
             width: 100%;
+
             padding: 20px 7%;
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             z-index: 1000;
 
-            background: rgba(5, 8, 13, 0.75);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background:
+                rgba(5, 8, 13, 0.75);
+
+            backdrop-filter:
+                blur(14px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.05);
+
+            transition:
+                background 0.3s ease;
+
         }
+
+
+        /* LOGO */
 
         .logo {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--blue);
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+            color:
+                var(--blue);
+
             letter-spacing: 1px;
+
+            text-shadow:
+                0 0 15px
+                rgba(56,189,248,0.25);
+
         }
+
+
+        /* NAV LINKS */
 
         .nav-links {
+
             display: flex;
+
             gap: 30px;
+
             list-style: none;
+
         }
+
 
         .nav-links a {
-            color: #c8d2dc;
+
+            color:
+                #c8d2dc;
+
             font-size: 14px;
-            transition: 0.3s;
+
+            transition:
+                0.3s ease;
+
         }
+
 
         .nav-links a:hover {
-            color: var(--blue);
+
+            color:
+                var(--blue);
+
         }
 
-        /* =========================
+
+        /* =====================================================
            GENERAL
-        ========================= */
+        ===================================================== */
 
         section {
-            padding: 110px 8%;
+
+            padding:
+                110px 8%;
+
         }
+
 
         .container {
-            max-width: 1200px;
-            margin: auto;
+
+            max-width:
+                1200px;
+
+            margin:
+                auto;
+
         }
+
 
         .section-title {
-            margin-bottom: 60px;
+
+            margin-bottom:
+                60px;
+
         }
+
 
         .section-title span {
-            color: var(--blue);
-            font-size: 14px;
-            font-weight: bold;
+
+            color:
+                var(--blue);
+
+            font-size:
+                14px;
+
+            font-weight:
+                bold;
+
+            letter-spacing:
+                2px;
+
         }
+
 
         .section-title h2 {
-            font-size: 42px;
-            margin-top: 5px;
+
+            font-size:
+                42px;
+
+            margin-top:
+                5px;
+
         }
+
 
         .section-title h2::after {
-            content: "";
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--blue);
-            margin-top: 15px;
-            box-shadow: 0 0 12px rgba(56,189,248,0.7);
+
+            content:
+                "";
+
+            display:
+                block;
+
+            width:
+                60px;
+
+            height:
+                3px;
+
+            background:
+                var(--blue);
+
+            margin-top:
+                15px;
+
+            box-shadow:
+                0 0 15px
+                rgba(56,189,248,0.65);
+
         }
 
-        /* =========================
+
+        /* =====================================================
            HERO
-        ========================= */
+        ===================================================== */
 
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 120px;
+
+            min-height:
+                100vh;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            padding-top:
+                120px;
+
         }
+
 
         .hero-content {
-            max-width: 900px;
+
+            max-width:
+                950px;
+
         }
+
 
         .hero-small {
-            color: var(--blue);
-            font-size: 17px;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
+
+            color:
+                var(--blue);
+
+            font-size:
+                16px;
+
+            margin-bottom:
+                18px;
+
+            letter-spacing:
+                3px;
+
+            font-weight:
+                600;
+
         }
+
 
         .hero h1 {
-            font-size: clamp(50px, 8vw, 95px);
-            line-height: 1;
-            margin-bottom: 20px;
-            letter-spacing: -3px;
+
+            font-size:
+                clamp(55px, 9vw, 105px);
+
+            line-height:
+                0.95;
+
+            margin-bottom:
+                25px;
+
+            letter-spacing:
+                -4px;
+
         }
 
-        .hero h1 span {
-            color: var(--blue);
-            text-shadow: 0 0 25px rgba(56,189,248,0.3);
+
+        /* BOTH WORDS COLORED */
+
+        .hero h1 .name {
+
+            color:
+                var(--blue);
+
+            text-shadow:
+                0 0 30px
+                rgba(56,189,248,0.3);
+
         }
+
 
         .hero-role {
-            font-size: clamp(24px, 4vw, 42px);
-            font-weight: 600;
-            color: #cbd5e1;
-            margin-bottom: 20px;
+
+            font-size:
+                clamp(25px, 4vw, 43px);
+
+            font-weight:
+                600;
+
+            color:
+                #d4dce5;
+
+            margin-bottom:
+                22px;
+
         }
+
+
+        .hero-role span {
+
+            color:
+                var(--blue);
+
+        }
+
 
         .hero-description {
-            max-width: 700px;
-            color: var(--muted);
-            font-size: 18px;
-            margin-bottom: 35px;
+
+            max-width:
+                720px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                18px;
+
+            margin-bottom:
+                35px;
+
         }
+
 
         .hero-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+
+            display:
+                flex;
+
+            gap:
+                15px;
+
+            flex-wrap:
+                wrap;
+
         }
+
 
         .btn {
-            padding: 13px 25px;
-            border: 1px solid var(--blue);
-            border-radius: 5px;
-            font-weight: 600;
-            transition: 0.3s;
+
+            padding:
+                13px 25px;
+
+            border:
+                1px solid var(--blue);
+
+            border-radius:
+                5px;
+
+            font-weight:
+                600;
+
+            transition:
+                0.3s ease;
+
         }
+
 
         .btn-primary {
-            background: var(--blue);
-            color: #031018;
+
+            background:
+                var(--blue);
+
+            color:
+                #031018;
+
         }
+
 
         .btn-primary:hover {
-            background: transparent;
-            color: var(--blue);
-            box-shadow: 0 0 20px rgba(56,189,248,0.2);
+
+            background:
+                transparent;
+
+            color:
+                var(--blue);
+
+            box-shadow:
+                0 0 25px
+                rgba(56,189,248,0.2);
+
         }
+
 
         .btn-outline {
-            color: var(--blue);
+
+            color:
+                var(--blue);
+
         }
+
 
         .btn-outline:hover {
-            background: var(--blue);
-            color: #031018;
+
+            background:
+                var(--blue);
+
+            color:
+                #031018;
+
         }
 
-        /* =========================
+
+        /* =====================================================
            ABOUT
-        ========================= */
+        ===================================================== */
 
         .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                50px;
+
+            align-items:
+                center;
+
         }
+
 
         .about-text p {
-            color: var(--muted);
-            margin-bottom: 18px;
-            font-size: 17px;
+
+            color:
+                var(--muted);
+
+            margin-bottom:
+                18px;
+
+            font-size:
+                17px;
+
         }
+
 
         .about-card {
-            padding: 35px;
-            border: 1px solid var(--border);
-            background: var(--card);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
+
+            padding:
+                35px;
+
+            border:
+                1px solid var(--border);
+
+            background:
+                var(--card);
+
+            border-radius:
+                12px;
+
+            backdrop-filter:
+                blur(10px);
+
         }
+
 
         .about-card h3 {
-            color: var(--blue);
-            margin-bottom: 20px;
+
+            color:
+                var(--blue);
+
+            margin-bottom:
+                20px;
+
         }
+
 
         .info-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            gap:
+                20px;
+
+            padding:
+                12px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.06);
+
         }
+
 
         .info-row:last-child {
-            border-bottom: none;
+
+            border-bottom:
+                none;
+
         }
+
 
         .info-row span:first-child {
-            color: var(--muted);
+
+            color:
+                var(--muted);
+
         }
+
 
         .info-row span:last-child {
-            text-align: right;
+
+            text-align:
+                right;
+
         }
 
-        /* =========================
+
+        /* =====================================================
            SKILLS
-        ========================= */
+        ===================================================== */
 
         .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                20px;
+
         }
+
 
         .skill-card {
-            padding: 30px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            transition: 0.35s;
+
+            padding:
+                30px;
+
+            background:
+                var(--card);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                10px;
+
+            transition:
+                0.35s ease;
+
         }
+
 
         .skill-card:hover {
-            transform: translateY(-7px);
-            border-color: var(--blue);
-            box-shadow: 0 10px 30px rgba(56,189,248,0.08);
+
+            transform:
+                translateY(-7px);
+
+            border-color:
+                var(--blue);
+
+            box-shadow:
+                0 12px 35px
+                rgba(56,189,248,0.08);
+
         }
+
 
         .skill-icon {
-            font-size: 32px;
-            margin-bottom: 15px;
+
+            font-size:
+                32px;
+
+            margin-bottom:
+                15px;
+
         }
+
 
         .skill-card h3 {
-            margin-bottom: 10px;
-            color: #f0f5f9;
+
+            margin-bottom:
+                10px;
+
+            color:
+                #f0f5f9;
+
         }
+
 
         .skill-card p {
-            color: var(--muted);
-            font-size: 14px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                14px;
+
         }
 
-        /* =========================
+
+        /* =====================================================
            EXPERIENCE
-        ========================= */
+        ===================================================== */
 
         .timeline {
-            position: relative;
-            max-width: 900px;
+
+            position:
+                relative;
+
+            max-width:
+                900px;
+
         }
+
 
         .timeline::before {
-            content: "";
-            position: absolute;
-            left: 8px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: rgba(56,189,248,0.2);
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            left:
+                8px;
+
+            top:
+                0;
+
+            bottom:
+                0;
+
+            width:
+                2px;
+
+            background:
+                rgba(56,189,248,0.2);
+
         }
+
 
         .timeline-item {
-            position: relative;
-            padding-left: 45px;
-            margin-bottom: 45px;
+
+            position:
+                relative;
+
+            padding-left:
+                45px;
+
+            margin-bottom:
+                45px;
+
         }
+
 
         .timeline-dot {
-            position: absolute;
-            left: 0;
-            top: 5px;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--blue);
-            box-shadow: 0 0 15px rgba(56,189,248,0.7);
+
+            position:
+                absolute;
+
+            left:
+                0;
+
+            top:
+                5px;
+
+            width:
+                18px;
+
+            height:
+                18px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--blue);
+
+            box-shadow:
+                0 0 18px
+                rgba(56,189,248,0.75);
+
         }
+
 
         .timeline-date {
-            color: var(--blue);
-            font-size: 14px;
-            margin-bottom: 5px;
+
+            color:
+                var(--blue);
+
+            font-size:
+                14px;
+
+            margin-bottom:
+                5px;
+
+            font-weight:
+                600;
+
         }
+
 
         .timeline-item h3 {
-            font-size: 22px;
-            margin-bottom: 5px;
+
+            font-size:
+                22px;
+
+            margin-bottom:
+                5px;
+
         }
+
 
         .timeline-company {
-            color: #b7c2cc;
-            margin-bottom: 12px;
+
+            color:
+                #b7c2cc;
+
+            margin-bottom:
+                12px;
+
         }
+
 
         .timeline-item p {
-            color: var(--muted);
+
+            color:
+                var(--muted);
+
         }
 
-        /* =========================
+
+        /* =====================================================
            PROJECTS
-        ========================= */
+        ===================================================== */
 
         .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap:
+                25px;
+
         }
+
 
         .project-card {
-            padding: 30px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            transition: 0.35s;
-            position: relative;
-            overflow: hidden;
+
+            padding:
+                30px;
+
+            background:
+                var(--card);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                12px;
+
+            transition:
+                0.35s ease;
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
         }
+
 
         .project-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--blue);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: 0.4s;
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            top:
+                0;
+
+            left:
+                0;
+
+            width:
+                100%;
+
+            height:
+                2px;
+
+            background:
+                var(--blue);
+
+            transform:
+                scaleX(0);
+
+            transform-origin:
+                left;
+
+            transition:
+                0.4s ease;
+
         }
+
 
         .project-card:hover::before {
-            transform: scaleX(1);
+
+            transform:
+                scaleX(1);
+
         }
+
 
         .project-card:hover {
-            transform: translateY(-7px);
-            border-color: rgba(56,189,248,0.4);
+
+            transform:
+                translateY(-7px);
+
+            border-color:
+                rgba(56,189,248,0.4);
+
+            box-shadow:
+                0 15px 35px
+                rgba(56,189,248,0.05);
+
         }
+
 
         .project-number {
-            color: var(--blue);
-            font-size: 14px;
-            margin-bottom: 15px;
+
+            color:
+                var(--blue);
+
+            font-size:
+                13px;
+
+            letter-spacing:
+                1px;
+
+            margin-bottom:
+                15px;
+
         }
+
 
         .project-card h3 {
-            font-size: 23px;
-            margin-bottom: 12px;
+
+            font-size:
+                23px;
+
+            margin-bottom:
+                12px;
+
         }
+
 
         .project-card p {
-            color: var(--muted);
-            margin-bottom: 20px;
+
+            color:
+                var(--muted);
+
+            margin-bottom:
+                20px;
+
         }
+
 
         .tags {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
+
+            display:
+                flex;
+
+            gap:
+                8px;
+
+            flex-wrap:
+                wrap;
+
         }
+
 
         .tag {
-            font-size: 12px;
-            padding: 5px 10px;
-            border: 1px solid rgba(56,189,248,0.2);
-            border-radius: 20px;
-            color: var(--blue);
-            background: rgba(56,189,248,0.04);
+
+            font-size:
+                12px;
+
+            padding:
+                5px 10px;
+
+            border:
+                1px solid
+                rgba(56,189,248,0.2);
+
+            border-radius:
+                20px;
+
+            color:
+                var(--blue);
+
+            background:
+                rgba(56,189,248,0.04);
+
         }
 
-        /* =========================
+
+        /* =====================================================
            CONTACT
-        ========================= */
+        ===================================================== */
 
         .contact-content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                20px;
+
         }
+
 
         .contact-card {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            padding: 25px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            transition: 0.3s;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                18px;
+
+            padding:
+                25px;
+
+            background:
+                var(--card);
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                10px;
+
+            transition:
+                0.3s ease;
+
         }
+
 
         .contact-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--blue);
-            box-shadow: 0 10px 25px rgba(56,189,248,0.06);
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                var(--blue);
+
+            box-shadow:
+                0 12px 30px
+                rgba(56,189,248,0.07);
+
         }
+
 
         .contact-icon {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 8px;
-            background: rgba(56,189,248,0.08);
-            color: var(--blue);
-            font-weight: bold;
-            font-size: 18px;
+
+            width:
+                48px;
+
+            height:
+                48px;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            border-radius:
+                8px;
+
+            background:
+                rgba(56,189,248,0.08);
+
+            color:
+                var(--blue);
+
+            font-weight:
+                bold;
+
+            font-size:
+                18px;
+
         }
+
 
         .contact-card h3 {
-            font-size: 16px;
-            margin-bottom: 4px;
+
+            font-size:
+                16px;
+
+            margin-bottom:
+                4px;
+
         }
+
 
         .contact-card p {
-            color: var(--muted);
-            font-size: 13px;
-            word-break: break-word;
+
+            color:
+                var(--muted);
+
+            font-size:
+                13px;
+
+            word-break:
+                break-word;
+
         }
 
-        /* =========================
+
+        /* =====================================================
            FOOTER
-        ========================= */
+        ===================================================== */
 
         footer {
-            padding: 35px 8%;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            text-align: center;
-            color: var(--muted);
+
+            padding:
+                35px 8%;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.06);
+
+            text-align:
+                center;
+
+            color:
+                var(--muted);
+
         }
+
 
         footer span {
-            color: var(--blue);
+
+            color:
+                var(--blue);
+
         }
+
 
         .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 15px;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            gap:
+                25px;
+
+            margin-bottom:
+                15px;
+
         }
+
 
         .social-links a {
-            color: #b9c4cd;
-            transition: 0.3s;
+
+            color:
+                #b9c4cd;
+
+            transition:
+                0.3s ease;
+
         }
+
 
         .social-links a:hover {
-            color: var(--blue);
+
+            color:
+                var(--blue);
+
         }
 
-        /* =========================
-           ANIMATION
-        ========================= */
+
+        /* =====================================================
+           SCROLL ANIMATION
+        ===================================================== */
 
         .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
+
+            opacity:
+                0;
+
+            transform:
+                translateY(30px);
+
             transition:
                 opacity 0.8s ease,
                 transform 0.8s ease;
+
         }
+
 
         .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+
+            opacity:
+                1;
+
+            transform:
+                translateY(0);
+
         }
 
-        /* =========================
+
+        /* =====================================================
            MOBILE
-        ========================= */
+        ===================================================== */
 
         @media (max-width: 900px) {
 
             .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
             }
+
 
             .contact-content {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
+
             }
+
 
             .about-grid {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
+
             }
 
+
             .projects-grid {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
+
             }
+
         }
+
 
         @media (max-width: 650px) {
 
             nav {
-                padding: 18px 5%;
+
+                padding:
+                    18px 5%;
+
             }
+
 
             .nav-links {
-                display: none;
+
+                display:
+                    none;
+
             }
+
 
             section {
-                padding: 90px 6%;
+
+                padding:
+                    90px 6%;
+
             }
+
 
             .hero {
-                padding-top: 130px;
+
+                padding-top:
+                    130px;
+
             }
+
 
             .hero h1 {
-                font-size: 55px;
+
+                font-size:
+                    58px;
+
+                letter-spacing:
+                    -3px;
+
             }
+
 
             .hero-role {
-                font-size: 27px;
+
+                font-size:
+                    27px;
+
             }
+
 
             .hero-description {
-                font-size: 16px;
+
+                font-size:
+                    16px;
+
             }
+
 
             .section-title h2 {
-                font-size: 34px;
+
+                font-size:
+                    34px;
+
             }
+
 
             .skills-grid {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    1fr;
+
             }
+
 
             .social-links {
-                flex-wrap: wrap;
+
+                flex-wrap:
+                    wrap;
+
             }
+
 
             .info-row {
-                flex-direction: column;
-                gap: 3px;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    3px;
+
             }
 
+
             .info-row span:last-child {
-                text-align: left;
+
+                text-align:
+                    left;
+
             }
+
         }
 
     </style>
+
 </head>
 
 
 <body>
 
-    <!-- =========================
-         STAR BACKGROUND
-    ========================= -->
+
+    <!-- =====================================================
+         BACKGROUND
+    ===================================================== -->
 
     <canvas id="stars"></canvas>
 
     <div class="glow one"></div>
+
     <div class="glow two"></div>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          NAVBAR
-    ========================= -->
+    ===================================================== -->
 
     <nav>
 
@@ -670,30 +1419,43 @@
             BM.
         </a>
 
+
         <ul class="nav-links">
 
             <li>
-                <a href="#home">Home</a>
+                <a href="#home">
+                    Home
+                </a>
             </li>
 
             <li>
-                <a href="#about">About</a>
+                <a href="#about">
+                    About
+                </a>
             </li>
 
             <li>
-                <a href="#skills">Skills</a>
+                <a href="#skills">
+                    Skills
+                </a>
             </li>
 
             <li>
-                <a href="#experience">Experience</a>
+                <a href="#experience">
+                    Experience
+                </a>
             </li>
 
             <li>
-                <a href="#projects">Projects</a>
+                <a href="#projects">
+                    Projects
+                </a>
             </li>
 
             <li>
-                <a href="#contact">Contact</a>
+                <a href="#contact">
+                    Contact
+                </a>
             </li>
 
         </ul>
@@ -701,9 +1463,10 @@
     </nav>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          HERO
-    ========================= -->
+    ===================================================== -->
 
     <section id="home" class="hero">
 
@@ -711,35 +1474,62 @@
 
             <div class="hero-content fade-in">
 
+
                 <div class="hero-small">
+
                     HELLO, I'M
+
                 </div>
+
 
                 <h1>
-                    Bishoy <span>Maged</span>
+
+                    <span class="name">
+                        Bishoy Maged
+                    </span>
+
                 </h1>
 
+
                 <div class="hero-role">
-                    Cloud & Infrastructure Engineer
+
+                    Cloud &
+                    <span>
+                        Infrastructure
+                    </span>
+                    Engineer
+
                 </div>
 
+
                 <p class="hero-description">
-                    Building reliable IT infrastructure across cloud,
-                    virtualization, networking, Linux, and data center
-                    environments.
+
+                    Building and managing reliable IT infrastructure
+                    across cloud, virtualization, networking, Linux,
+                    and data center environments.
+
                 </p>
+
 
                 <div class="hero-buttons">
 
-                    <a href="#projects" class="btn btn-primary">
+                    <a
+                        href="#projects"
+                        class="btn btn-primary"
+                    >
                         View My Work
                     </a>
 
-                    <a href="#contact" class="btn btn-outline">
+
+                    <a
+                        href="#contact"
+                        class="btn btn-outline"
+                    >
                         Contact Me
                     </a>
 
                 </div>
+
 
             </div>
 
@@ -748,17 +1538,21 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          ABOUT
-    ========================= -->
+    ===================================================== -->
 
     <section id="about">
 
         <div class="container">
 
+
             <div class="section-title fade-in">
 
-                <span>01</span>
+                <span>
+                    01
+                </span>
 
                 <h2>
                     About Me
@@ -767,30 +1561,43 @@
             </div>
 
 
+
             <div class="about-grid">
+
 
                 <div class="about-text fade-in">
 
                     <p>
-                        I am a Cloud & Infrastructure Engineer with a
-                        background in Electrical and Communication Engineering.
+
+                        I am a Cloud & Infrastructure Engineer
+                        with a background in Electrical and
+                        Communication Engineering.
+
                     </p>
 
+
                     <p>
-                        My focus is on designing, deploying and maintaining
-                        reliable infrastructure using cloud platforms,
-                        virtualization, networking, Linux and data center
+
+                        My focus is on cloud infrastructure,
+                        virtualization, networking, Linux,
+                        monitoring, storage, and data center
                         technologies.
+
                     </p>
 
+
                     <p>
-                        I enjoy building practical labs and working with
-                        technologies such as AWS, VMware vSphere, Linux,
-                        Windows Server, Docker, Kubernetes and enterprise
-                        infrastructure.
+
+                        I enjoy building practical environments
+                        and working with enterprise technologies
+                        such as AWS, VMware vSphere, Linux,
+                        Windows Server, Docker and Kubernetes.
+
                     </p>
+
 
                 </div>
+
 
 
                 <div class="about-card fade-in">
@@ -799,32 +1606,74 @@
                         Quick Information
                     </h3>
 
-                    <div class="info-row">
-                        <span>Name</span>
-                        <span>Bishoy Maged</span>
-                    </div>
 
                     <div class="info-row">
-                        <span>Role</span>
-                        <span>Cloud & Infrastructure Engineer</span>
+
+                        <span>
+                            Name
+                        </span>
+
+                        <span>
+                            Bishoy Maged
+                        </span>
+
                     </div>
 
-                    <div class="info-row">
-                        <span>Location</span>
-                        <span>Cairo, Egypt</span>
-                    </div>
 
                     <div class="info-row">
-                        <span>Focus</span>
-                        <span>Cloud & Data Center</span>
+
+                        <span>
+                            Role
+                        </span>
+
+                        <span>
+                            Cloud & Infrastructure Engineer
+                        </span>
+
                     </div>
 
+
                     <div class="info-row">
-                        <span>Infrastructure</span>
-                        <span>VMware / Linux / Networking</span>
+
+                        <span>
+                            Location
+                        </span>
+
+                        <span>
+                            Cairo, Egypt
+                        </span>
+
                     </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Focus
+                        </span>
+
+                        <span>
+                            Cloud & Data Center
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Core
+                        </span>
+
+                        <span>
+                            AWS / VMware / Linux
+                        </span>
+
+                    </div>
+
 
                 </div>
+
 
             </div>
 
@@ -833,17 +1682,21 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          SKILLS
-    ========================= -->
+    ===================================================== -->
 
     <section id="skills">
 
         <div class="container">
 
+
             <div class="section-title fade-in">
 
-                <span>02</span>
+                <span>
+                    02
+                </span>
 
                 <h2>
                     Technical Skills
@@ -852,8 +1705,11 @@
             </div>
 
 
+
             <div class="skills-grid">
 
+
+                <!-- CLOUD -->
 
                 <div class="skill-card fade-in">
 
@@ -866,13 +1722,17 @@
                     </h3>
 
                     <p>
-                        AWS, VPC, EC2, S3, IAM, RDS, ELB,
-                        Auto Scaling, CloudWatch and core AWS
-                        infrastructure services.
+
+                        AWS, VPC, EC2, S3, IAM, RDS,
+                        ELB, Auto Scaling and CloudWatch.
+
                     </p>
 
                 </div>
 
+
+
+                <!-- VMWARE -->
 
                 <div class="skill-card fade-in">
 
@@ -885,13 +1745,17 @@
                     </h3>
 
                     <p>
-                        VMware vSphere, ESXi, vCenter, HA, DRS,
-                        vMotion, Fault Tolerance and virtual
-                        infrastructure management.
+
+                        VMware vSphere, ESXi, vCenter,
+                        HA, DRS, vMotion and Fault Tolerance.
+
                     </p>
 
                 </div>
 
+
+
+                <!-- LINUX -->
 
                 <div class="skill-card fade-in">
 
@@ -904,13 +1768,18 @@
                     </h3>
 
                     <p>
-                        Red Hat Enterprise Linux administration,
-                        services, networking, permissions,
-                        storage and system management.
+
+                        Red Hat Enterprise Linux,
+                        system administration, networking,
+                        storage and services.
+
                     </p>
 
                 </div>
 
+
+
+                <!-- NETWORKING -->
 
                 <div class="skill-card fade-in">
 
@@ -923,70 +1792,17 @@
                     </h3>
 
                     <p>
-                        Routing & Switching, TCP/IP, VLANs,
-                        subnetting, DNS, DHCP, NAT and
-                        network troubleshooting.
+
+                        Routing & Switching, TCP/IP,
+                        VLANs, subnetting, DNS, DHCP and NAT.
+
                     </p>
 
                 </div>
 
 
-                <div class="skill-card fade-in">
 
-                    <div class="skill-icon">
-                        📦
-                    </div>
-
-                    <h3>
-                        Containers
-                    </h3>
-
-                    <p>
-                        Docker, Docker Compose, container
-                        networking, images, volumes and
-                        Kubernetes fundamentals.
-                    </p>
-
-                </div>
-
-
-                <div class="skill-card fade-in">
-
-                    <div class="skill-icon">
-                        📊
-                    </div>
-
-                    <h3>
-                        Monitoring
-                    </h3>
-
-                    <p>
-                        AppDynamics, Splunk and SolarWinds
-                        for infrastructure monitoring,
-                        observability and troubleshooting.
-                    </p>
-
-                </div>
-
-
-                <div class="skill-card fade-in">
-
-                    <div class="skill-icon">
-                        🪟
-                    </div>
-
-                    <h3>
-                        Windows Server
-                    </h3>
-
-                    <p>
-                        Active Directory, DNS, Group Policy,
-                        Windows Server administration and
-                        enterprise infrastructure concepts.
-                    </p>
-
-                </div>
-
+                <!-- STORAGE -->
 
                 <div class="skill-card fade-in">
 
@@ -999,13 +1815,89 @@
                     </h3>
 
                     <p>
-                        SAN, NAS, RAID, LUNs, storage
-                        networking, enterprise storage and
-                        VMware storage concepts.
+
+                        SAN, NAS, RAID, LUNs,
+                        storage networking and enterprise
+                        storage concepts.
+
                     </p>
 
                 </div>
 
+
+
+                <!-- MONITORING -->
+
+                <div class="skill-card fade-in">
+
+                    <div class="skill-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Monitoring
+                    </h3>
+
+                    <p>
+
+                        AppDynamics, Splunk and SolarWinds
+                        for monitoring and troubleshooting.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- WINDOWS -->
+
+                <div class="skill-card fade-in">
+
+                    <div class="skill-icon">
+                        🪟
+                    </div>
+
+                    <h3>
+                        Windows Server
+                    </h3>
+
+                    <p>
+
+                        Active Directory, DNS,
+                        Group Policy and Windows
+                        Server administration.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CONTAINERS -->
+
+                <div class="skill-card fade-in">
+
+                    <div class="skill-icon">
+                        📦
+                    </div>
+
+                    <h3>
+                        Containers
+                    </h3>
+
+                    <p>
+
+                        Docker, Docker Compose,
+                        container networking and
+                        Kubernetes fundamentals.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- DEVOPS -->
 
                 <div class="skill-card fade-in">
 
@@ -1018,11 +1910,14 @@
                     </h3>
 
                     <p>
-                        Git, GitHub, Bash, Python, Terraform,
-                        Ansible, Jenkins and CI/CD fundamentals.
+
+                        Git, GitHub, Bash, Python,
+                        Terraform, Ansible and Jenkins.
+
                     </p>
 
                 </div>
+
 
             </div>
 
@@ -1031,23 +1926,28 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          EXPERIENCE
-    ========================= -->
+    ===================================================== -->
 
     <section id="experience">
 
         <div class="container">
 
+
             <div class="section-title fade-in">
 
-                <span>03</span>
+                <span>
+                    03
+                </span>
 
                 <h2>
                     Experience
                 </h2>
 
             </div>
+
 
 
             <div class="timeline">
@@ -1059,26 +1959,34 @@
 
                     <div class="timeline-dot"></div>
 
+
                     <div class="timeline-date">
                         2026 - Present
                     </div>
+
 
                     <h3>
                         Jr. Cloud & Infrastructure Engineer
                     </h3>
 
+
                     <div class="timeline-company">
-                        Ministry of Communications and Information Technology
+                        Ministry of Communications and
+                        Information Technology
                     </div>
 
+
                     <p>
+
                         Working with data center infrastructure,
                         virtualization, cloud technologies,
                         networking, monitoring and enterprise
                         infrastructure operations.
+
                     </p>
 
                 </div>
+
 
 
                 <!-- ITOM -->
@@ -1087,78 +1995,99 @@
 
                     <div class="timeline-dot"></div>
 
+
                     <div class="timeline-date">
                         Oct 2025 - Nov 2025
                     </div>
+
 
                     <h3>
                         ITOM Engineer
                     </h3>
 
+
                     <div class="timeline-company">
                         Injaz Consulting Group
                     </div>
 
+
                     <p>
-                        Worked with monitoring and observability
-                        technologies including AppDynamics,
-                        Splunk and SolarWinds.
+
+                        Worked with infrastructure monitoring
+                        and observability technologies including
+                        AppDynamics, Splunk and SolarWinds.
+
                     </p>
 
                 </div>
 
 
-                <!-- Cloud AI -->
+
+                <!-- CLOUD AI -->
 
                 <div class="timeline-item fade-in">
 
                     <div class="timeline-dot"></div>
+
 
                     <div class="timeline-date">
                         Jul 2025 - Aug 2025
                     </div>
 
+
                     <h3>
                         Cloud AI Engineer
                     </h3>
+
 
                     <div class="timeline-company">
                         Zero&One
                     </div>
 
+
                     <p>
-                        Worked with AWS cloud services and
-                        cloud infrastructure concepts.
+
+                        Worked with AWS cloud services
+                        and cloud infrastructure concepts.
+
                     </p>
 
                 </div>
 
 
-                <!-- Cloud Solutions -->
+
+                <!-- NTI -->
 
                 <div class="timeline-item fade-in">
 
                     <div class="timeline-dot"></div>
 
+
                     <div class="timeline-date">
                         Feb 2025 - May 2025
                     </div>
+
 
                     <h3>
                         Cloud Solutions Architect Engineer
                     </h3>
 
+
                     <div class="timeline-company">
                         NTI
                     </div>
 
+
                     <p>
-                        Worked with AWS, VMware vSphere and
-                        Red Hat Linux administration through
-                        practical labs and infrastructure projects.
+
+                        Worked with AWS, VMware vSphere
+                        and Red Hat Linux administration
+                        through practical infrastructure labs.
+
                     </p>
 
                 </div>
+
 
             </div>
 
@@ -1167,17 +2096,21 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          PROJECTS
-    ========================= -->
+    ===================================================== -->
 
     <section id="projects">
 
         <div class="container">
 
+
             <div class="section-title fade-in">
 
-                <span>04</span>
+                <span>
+                    04
+                </span>
 
                 <h2>
                     Featured Projects
@@ -1186,8 +2119,11 @@
             </div>
 
 
+
             <div class="projects-grid">
 
+
+                <!-- PROJECT 1 -->
 
                 <div class="project-card fade-in">
 
@@ -1195,29 +2131,51 @@
                         PROJECT 01
                     </div>
 
+
                     <h3>
-                        VMware vSphere Infrastructure
+                        AWS Cloud Architecture
                     </h3>
 
+
                     <p>
-                        Designed and implemented a VMware vSphere
-                        environment including ESXi hosts, vCenter,
-                        cluster configuration, HA, DRS and virtual
-                        networking.
+
+                        Designed AWS cloud architecture using
+                        VPC, public and private subnets,
+                        route tables, security groups,
+                        NAT Gateway and scalable compute.
+
                     </p>
+
 
                     <div class="tags">
 
-                        <span class="tag">VMware</span>
-                        <span class="tag">ESXi</span>
-                        <span class="tag">vCenter</span>
-                        <span class="tag">HA</span>
-                        <span class="tag">DRS</span>
+                        <span class="tag">
+                            AWS
+                        </span>
+
+                        <span class="tag">
+                            VPC
+                        </span>
+
+                        <span class="tag">
+                            EC2
+                        </span>
+
+                        <span class="tag">
+                            Networking
+                        </span>
+
+                        <span class="tag">
+                            CloudWatch
+                        </span>
 
                     </div>
 
                 </div>
 
+
+
+                <!-- PROJECT 2 -->
 
                 <div class="project-card fade-in">
 
@@ -1225,29 +2183,51 @@
                         PROJECT 02
                     </div>
 
+
                     <h3>
-                        AWS Cloud Architecture
+                        VMware vSphere Infrastructure
                     </h3>
 
+
                     <p>
-                        Built AWS cloud architecture using VPC,
-                        public and private subnets, route tables,
-                        security groups, NAT Gateway, load balancing
-                        and scalable compute resources.
+
+                        Built a VMware vSphere environment
+                        including ESXi hosts, vCenter,
+                        clustering, HA, DRS, vMotion
+                        and virtual networking.
+
                     </p>
+
 
                     <div class="tags">
 
-                        <span class="tag">AWS</span>
-                        <span class="tag">VPC</span>
-                        <span class="tag">EC2</span>
-                        <span class="tag">ELB</span>
-                        <span class="tag">CloudWatch</span>
+                        <span class="tag">
+                            VMware
+                        </span>
+
+                        <span class="tag">
+                            ESXi
+                        </span>
+
+                        <span class="tag">
+                            vCenter
+                        </span>
+
+                        <span class="tag">
+                            HA
+                        </span>
+
+                        <span class="tag">
+                            DRS
+                        </span>
 
                     </div>
 
                 </div>
 
+
+
+                <!-- PROJECT 3 -->
 
                 <div class="project-card fade-in">
 
@@ -1255,27 +2235,47 @@
                         PROJECT 03
                     </div>
 
+
                     <h3>
                         Active Directory & Group Policy
                     </h3>
 
+
                     <p>
+
                         Implemented Windows Server Active Directory
-                        and Group Policy concepts for user management,
-                        permissions and centralized administration.
+                        and Group Policy for centralized user
+                        management, permissions and
+                        administration.
+
                     </p>
+
 
                     <div class="tags">
 
-                        <span class="tag">Windows Server</span>
-                        <span class="tag">Active Directory</span>
-                        <span class="tag">DNS</span>
-                        <span class="tag">GPO</span>
+                        <span class="tag">
+                            Windows Server
+                        </span>
+
+                        <span class="tag">
+                            Active Directory
+                        </span>
+
+                        <span class="tag">
+                            DNS
+                        </span>
+
+                        <span class="tag">
+                            GPO
+                        </span>
 
                     </div>
 
                 </div>
 
+
+
+                <!-- PROJECT 4 -->
 
                 <div class="project-card fade-in">
 
@@ -1283,28 +2283,47 @@
                         PROJECT 04
                     </div>
 
+
                     <h3>
                         Docker Multi-Container Environment
                     </h3>
 
+
                     <p>
-                        Built multi-container environments using
-                        Docker and Docker Compose with custom bridge
-                        networks, services, ports, volumes and
-                        container communication.
+
+                        Built multi-container environments
+                        using Docker Compose with custom
+                        bridge networks, services, ports,
+                        volumes and container communication.
+
                     </p>
+
 
                     <div class="tags">
 
-                        <span class="tag">Docker</span>
-                        <span class="tag">Compose</span>
-                        <span class="tag">Linux</span>
-                        <span class="tag">Networking</span>
+                        <span class="tag">
+                            Docker
+                        </span>
+
+                        <span class="tag">
+                            Compose
+                        </span>
+
+                        <span class="tag">
+                            Linux
+                        </span>
+
+                        <span class="tag">
+                            Networking
+                        </span>
 
                     </div>
 
                 </div>
 
+
+
+                <!-- PROJECT 5 -->
 
                 <div class="project-card fade-in">
 
@@ -1312,27 +2331,47 @@
                         PROJECT 05
                     </div>
 
+
                     <h3>
-                        Healthcare Security Robot
+                        Infrastructure Monitoring
                     </h3>
 
+
                     <p>
-                        Graduation project focused on implementing
-                        a wireless security system for a healthcare
-                        robot.
+
+                        Worked with enterprise monitoring
+                        platforms to analyze infrastructure
+                        performance, availability and
+                        operational events.
+
                     </p>
+
 
                     <div class="tags">
 
-                        <span class="tag">IoT</span>
-                        <span class="tag">Wireless</span>
-                        <span class="tag">Security</span>
-                        <span class="tag">Robotics</span>
+                        <span class="tag">
+                            Splunk
+                        </span>
+
+                        <span class="tag">
+                            AppDynamics
+                        </span>
+
+                        <span class="tag">
+                            SolarWinds
+                        </span>
+
+                        <span class="tag">
+                            Monitoring
+                        </span>
 
                     </div>
 
                 </div>
 
+
+
+                <!-- PROJECT 6 -->
 
                 <div class="project-card fade-in">
 
@@ -1340,27 +2379,43 @@
                         PROJECT 06
                     </div>
 
+
                     <h3>
-                        Infrastructure Monitoring
+                        Linux Infrastructure Labs
                     </h3>
 
+
                     <p>
-                        Practical monitoring and observability
-                        experience using enterprise monitoring
-                        platforms to analyze infrastructure
-                        performance and availability.
+
+                        Practical Linux administration labs
+                        covering system management, networking,
+                        services, storage and troubleshooting.
+
                     </p>
+
 
                     <div class="tags">
 
-                        <span class="tag">Splunk</span>
-                        <span class="tag">AppDynamics</span>
-                        <span class="tag">SolarWinds</span>
-                        <span class="tag">Monitoring</span>
+                        <span class="tag">
+                            RHEL
+                        </span>
+
+                        <span class="tag">
+                            Linux
+                        </span>
+
+                        <span class="tag">
+                            Bash
+                        </span>
+
+                        <span class="tag">
+                            Administration
+                        </span>
 
                     </div>
 
                 </div>
+
 
             </div>
 
@@ -1369,23 +2424,28 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          CONTACT
-    ========================= -->
+    ===================================================== -->
 
     <section id="contact">
 
         <div class="container">
 
+
             <div class="section-title fade-in">
 
-                <span>05</span>
+                <span>
+                    05
+                </span>
 
                 <h2>
                     Let's Connect
                 </h2>
 
             </div>
+
 
 
             <div class="contact-content">
@@ -1402,6 +2462,7 @@
                         ✉
                     </div>
 
+
                     <div>
 
                         <h3>
@@ -1417,6 +2478,7 @@
                 </a>
 
 
+
                 <!-- LINKEDIN -->
 
                 <a
@@ -1429,6 +2491,7 @@
                     <div class="contact-icon">
                         in
                     </div>
+
 
                     <div>
 
@@ -1445,6 +2508,7 @@
                 </a>
 
 
+
                 <!-- GITHUB -->
 
                 <a
@@ -1457,6 +2521,7 @@
                     <div class="contact-icon">
                         &lt;/&gt;
                     </div>
+
 
                     <div>
 
@@ -1480,13 +2545,16 @@
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          FOOTER
-    ========================= -->
+    ===================================================== -->
 
     <footer>
 
+
         <div class="social-links">
+
 
             <a
                 href="https://www.linkedin.com/in/bishoy-maged22/"
@@ -1496,6 +2564,7 @@
                 LinkedIn
             </a>
 
+
             <a
                 href="https://github.com/BishoyMaged22"
                 target="_blank"
@@ -1504,65 +2573,102 @@
                 GitHub
             </a>
 
+
             <a
                 href="mailto:bishoymaged2012@gmail.com"
             >
                 Email
             </a>
 
+
         </div>
 
+
         <p>
-            © 2026 <span>Bishoy Maged</span>.
-            Cloud & Infrastructure Engineer.
+
+            © 2026
+
+            <span>
+                Bishoy Maged
+            </span>
+
+            · Cloud & Infrastructure Engineer
+
         </p>
+
 
     </footer>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          JAVASCRIPT
-    ========================= -->
+    ===================================================== -->
 
     <script>
 
-        /* =========================
-           STARFIELD
-        ========================= */
 
-        const canvas = document.getElementById("stars");
-        const ctx = canvas.getContext("2d");
+        /* =====================================================
+           STARFIELD
+        ===================================================== */
+
+        const canvas =
+            document.getElementById("stars");
+
+        const ctx =
+            canvas.getContext("2d");
+
 
         let stars = [];
+
         let width;
+
         let height;
+
 
 
         function resizeCanvas() {
 
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
+            width =
+                canvas.width =
+                window.innerWidth;
+
+
+            height =
+                canvas.height =
+                window.innerHeight;
+
 
             createStars();
 
         }
 
 
+
         function createStars() {
 
             stars = [];
 
+
             const numberOfStars =
-                Math.floor((width * height) / 8000);
+                Math.floor(
+                    (width * height) / 8000
+                );
 
 
-            for (let i = 0; i < numberOfStars; i++) {
+            for (
+                let i = 0;
+                i < numberOfStars;
+                i++
+            ) {
 
                 stars.push({
 
-                    x: Math.random() * width,
+                    x:
+                        Math.random() * width,
 
-                    y: Math.random() * height,
+                    y:
+                        Math.random() * height,
 
                     radius:
                         Math.random() * 1.5 + 0.2,
@@ -1580,6 +2686,7 @@
         }
 
 
+
         function drawStars() {
 
             ctx.clearRect(
@@ -1592,28 +2699,47 @@
 
             stars.forEach(star => {
 
+
                 ctx.beginPath();
 
+
                 ctx.arc(
+
                     star.x,
+
                     star.y,
+
                     star.radius,
+
                     0,
+
                     Math.PI * 2
+
                 );
 
+
                 ctx.fillStyle =
-                    `rgba(56,189,248,${star.opacity})`;
+                    `rgba(
+                        56,
+                        189,
+                        248,
+                        ${star.opacity}
+                    )`;
+
 
                 ctx.fill();
 
 
-                star.y -= star.speed;
+                star.y -=
+                    star.speed;
 
 
-                if (star.y < 0) {
+                if (
+                    star.y < 0
+                ) {
 
-                    star.y = height;
+                    star.y =
+                        height;
 
                     star.x =
                         Math.random() * width;
@@ -1623,9 +2749,12 @@
             });
 
 
-            requestAnimationFrame(drawStars);
+            requestAnimationFrame(
+                drawStars
+            );
 
         }
+
 
 
         window.addEventListener(
@@ -1635,29 +2764,35 @@
 
 
         resizeCanvas();
+
         drawStars();
 
 
-        /* =========================
+
+        /* =====================================================
            SCROLL ANIMATION
-        ========================= */
+        ===================================================== */
 
         const observer =
             new IntersectionObserver(
 
                 entries => {
 
-                    entries.forEach(entry => {
+                    entries.forEach(
+                        entry => {
 
-                        if (entry.isIntersecting) {
+                            if (
+                                entry.isIntersecting
+                            ) {
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
+                                entry.target
+                                    .classList
+                                    .add("visible");
+
+                            }
 
                         }
-
-                    });
+                    );
 
                 },
 
@@ -1668,31 +2803,40 @@
             );
 
 
+
         document
             .querySelectorAll(".fade-in")
-            .forEach(element => {
+            .forEach(
+                element => {
 
-                observer.observe(element);
+                    observer.observe(
+                        element
+                    );
 
-            });
+                }
+            );
 
 
-        /* =========================
+
+        /* =====================================================
            NAVBAR SCROLL EFFECT
-        ========================= */
+        ===================================================== */
 
         const navbar =
             document.querySelector("nav");
+
 
 
         window.addEventListener(
             "scroll",
             () => {
 
-                if (window.scrollY > 50) {
+                if (
+                    window.scrollY > 50
+                ) {
 
                     navbar.style.background =
-                        "rgba(5,8,13,0.92)";
+                        "rgba(5,8,13,0.94)";
 
                 } else {
 
@@ -1704,7 +2848,9 @@
             }
         );
 
+
     </script>
+
 
 </body>
 </html>
